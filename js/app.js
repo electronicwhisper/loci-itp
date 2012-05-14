@@ -18,8 +18,6 @@ function addProject(project) {
   }
 }
 
-var splashShown = false;
-
 
 
 
@@ -39,9 +37,9 @@ function loadPage() {
     var project = parseInt(hash.substr(8), 10);
     addProject(project);
     
-    if (projects.length === 1 && !splashShown) {
+    if (projects.length === 1 && !cookie.get("splashShown")) {
       // show splash page first
-      splashShown = true;
+      cookie.set("splashShown"); // so we don't display it again
       
       // hide the footer
       $(".footer").hide();
