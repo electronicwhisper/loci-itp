@@ -14,8 +14,11 @@ var projects = getProjects();
 function addProject(project) {
   if (projects.indexOf(project) === -1) { // only add it if it's not already in the projects list
     projects.push(project);
-    cookie.set("projects", JSON.stringify(projects), {expires: 1000}); // expire 1000 days from now
+    setProjects(projects);
   }
+}
+function setProjects(projects) {
+  cookie.set("projects", JSON.stringify(projects), {expires: 1000}); // expire 1000 days from now
 }
 
 
@@ -58,7 +61,10 @@ function loadPage() {
       $("#content").append(presidentHTML);
     }
     
-    
+  } else if (hash.substr(0, 5) === "path=") {
+    projects = hash.substr(5).split(",").map(function (x) {return parseInt(x, 10);});
+    setProjects(projects);
+    location.hash = "list";
   } else if (hash === "list") {
     var associations = projects.map(function (project, i) {
       return {
@@ -68,7 +74,7 @@ function loadPage() {
       };
     });
     
-    var html = ich.list({associations: associations});
+    var html = ich.list({associations: associations, path: projects.join(",")});
     
     $("#content").append(html);
     

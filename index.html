@@ -18,7 +18,7 @@
 <div class="footer">
   <div class="menu">
     <a href="#scan">Scan Another Loci QR Code</a>
-    <a href="#list">What You Have Learned So Far</a>
+    <a href="#list">Review Your Path</a>
     <!-- <a href="yourMap.html">Your Map</a> -->
     <a href="#about">About Loci</a>
   </div>
@@ -77,6 +77,7 @@
 
 
 <script id="list" type="text/html">
+<h2 class="head">Review Your Path</h2>
 {{#associations}}
   <div class="menu">
     <a href="#project={{projectID}}">
@@ -89,6 +90,14 @@
     </a>
   </div>
 {{/associations}}
+<h2 class="head">Send Your Path To Your Email</h2>
+<div class="content">
+  <form method="get" action="http://locimind.com/ITPmobile/mail.php">
+    <input type="hidden" name="path" value="{{path}}" />
+    Email: <input type="text" name="email" size="40" />
+    <button type="submit">Send</button>
+  </form>
+</div>
 </script>
 
 
