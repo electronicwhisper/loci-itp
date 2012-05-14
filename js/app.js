@@ -18,6 +18,8 @@ function addProject(project) {
   }
 }
 
+var splashShown = false;
+
 
 
 
@@ -26,6 +28,8 @@ function addProject(project) {
 function loadPage() {
   // clear the content html
   $("#content").html("");
+  // make sure footer is shown (if splash page happens, it will hide the footer)
+  $(".footer").show();
   
   var hash = location.hash.substr(1);
   
@@ -35,15 +39,27 @@ function loadPage() {
     var project = parseInt(hash.substr(8), 10);
     addProject(project);
     
-    var num = projects.indexOf(project); // which number (i.e. president) we're on
+    if (projects.length === 1 && !splashShown) {
+      // show splash page first
+      splashShown = true;
+      
+      // hide the footer
+      $(".footer").hide();
+      
+      var html = ich.splash({projectID: project});
+      $("#content").append(html);
+    } else {
+      var num = projects.indexOf(project); // which number (i.e. president) we're on
+
+      // TODO: check that presidents isn't overflowed, show "win" info
+
+      var presidentHTML = ich.president(presidentsDB[num]);
+      var projectHTML = ich.project(projectsDB[project]);
+
+      $("#content").append(projectHTML);
+      $("#content").append(presidentHTML);
+    }
     
-    // TODO: check that presidents isn't overflowed, show "win" info
-    
-    var presidentHTML = ich.president(presidentsDB[num]);
-    var projectHTML = ich.project(projectsDB[project]);
-    
-    $("#content").append(projectHTML);
-    $("#content").append(presidentHTML);
     
   } else if (hash === "list") {
     var associations = projects.map(function (project, i) {
