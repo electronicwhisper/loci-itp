@@ -1,4 +1,6 @@
 
+// manages the list of projects that the user has qr-scanned
+// these get put in a global variable, an array called projects
 function getProjects() {
   var projects = [];
   var c = cookie.get("projects");
@@ -19,7 +21,8 @@ function addProject(project) {
 
 
 
-
+// based on the location hash (url after the #), fills up the content div appropriately
+// this gets called when the page loads
 function loadPage() {
   var hash = location.hash.substr(1);
   
@@ -50,7 +53,7 @@ loadPage();
 
 
 
-
+// Show more and show less functionality
 $("body").on("click", ".show-more-button", function () {
   var showMore = $(this).parents(".show-more");
   showMore.find(".show-more-button").hide();
@@ -63,32 +66,3 @@ $("body").on("click", ".show-less-button", function () {
   showMore.find(".more").hide();
   showMore.find(".show-less-button").hide();
 });
-
-
-
-
-
-
-
-
-
-
-// this will add the project given by the query parameter, ie:
-// if the url is: qr.html?project=29
-// then 29 will be added to the projects list (unless it is already in the projects list, in which case nothing will happen.)
-function addProjectBasedOnUrl() {
-  var urlVars = getUrlVars();
-  if (urlVars["project"]) {
-    addProject(urlVars["project"])
-  }
-}
-
-
-
-function showDebug() {
-  var s = "Projects: "+JSON.stringify(projects);
-  document.getElementById("debug").innerHTML = s;
-}
-
-
-

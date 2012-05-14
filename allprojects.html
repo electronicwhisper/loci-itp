@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="js/projectsDB.js"></script>
+<style type="text/css">
+tr:nth-child(even) {
+    background-color: #fff;
+}
+tr:nth-child(odd) {
+    background-color: #ccc;
+}
+</style>
+</head>
+<body>
+<table id="projects" cellpadding="8" cellspacing="0"></table>
+<script>
+var s = "";
+projectsDB.forEach(function (project, i) {
+  s += "<tr><td>"+i+"</td><td>"+project["title"]+"</td><td>"+project["author"]+"</td></tr>";
+});
+document.getElementById("projects").innerHTML = s;
+</script>
+</body>
+</html>
