@@ -24,6 +24,9 @@ function addProject(project) {
 // based on the location hash (url after the #), fills up the content div appropriately
 // this gets called when the page loads
 function loadPage() {
+  // clear the content html
+  $("#content").html("");
+  
   var hash = location.hash.substr(1);
   
   ich.grabTemplates();
@@ -34,15 +37,31 @@ function loadPage() {
     
     var num = projects.indexOf(project); // which number (i.e. president) we're on
     
+    // TODO: check that presidents isn't overflowed, show "win" info
+    
     var presidentHTML = ich.president(presidentsDB[num]);
     var projectHTML = ich.project(projectsDB[project]);
     
-    $("#content").html(""); // clear it
     $("#content").append(projectHTML);
     $("#content").append(presidentHTML);
     
-  } else if (hash === "about") {
+  } else if (hash === "list") {
+    var associations = projects.map(function (project, i) {
+      return {project: projectsDB[project], president: presidentsDB[i]}
+    });
     
+    var html = ich.list({associations: associations});
+    
+    $("#content").append(html);
+    
+  } else {
+    // assume it's a static page
+    if (!ich.templates[hash]) {
+      // if it's a totally unexpected hash, just use the about page
+      hash = "about";
+    }
+    var html = ich[hash]({});
+    $("#content").append(html);
   }
 }
 

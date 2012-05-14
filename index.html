@@ -17,10 +17,10 @@
 
 <div class="footer">
 <div class="menu">
-	<a href="scan.html">Scan Another Loci QR Code</a>
-    <a href="history.html">What You Have Learned So Far</a>
+	<a href="#scan">Scan Another Loci QR Code</a>
+    <a href="#list">What You Have Learned So Far</a>
     <a href="yourMap.html">Your Map</a>
-    <a href="about.html">About Loci</a>
+    <a href="#about">About Loci</a>
 </div>
     <div class="clear"></div>
     <p>Design By <a href="http://www.mariarabinovich.com">Maria Rabinovich</a></p>
@@ -74,6 +74,32 @@
 </div>
 </script>
 
+
+
+<script id="list" type="text/html">
+{{#associations}}
+  <div>
+    {{#project}}{{title}}{{/project}} - {{#president}}{{name}}{{/president}}
+  </div>
+{{/associations}}
+</script>
+
+
+
+<script id="about" type="text/html">
+<h2 class="head">About Loci</h2>
+<div class="content">
+<p><a href="http://locimind.com"><b>Loci</b></a> turns your environment into a real life <b>Memory Palace </b>- helping you learn and remember whatever you want. It was developed by Maria Rabinovich as a learning application for the mobile phone. Here at the <b>ITP show</b> you can use Loci to learn about the presidents of the United States, using QR codes, but it usually runs on your mobile phone and uses GPS, allowing you to turn your walks or commute into a learning experience. Visit Maria in the app room to talk to her about this project.</p>
+</div>
+</script>
+
+
+<script id="scan" type="text/html">
+<h2 class="head">Scan a Loci QR Code!</h2>
+<div class="content">
+<p>Please use your QR code scanning application to scan a code, Loci will be immediately activated, and your learning experience will begin!</p>
+</div>
+</script>
 
 
 <script src="js/jquery-1.7.2.min.js"></script>
