@@ -1,16 +1,3 @@
-// modified from http://jquery-howto.blogspot.com/2009/09/get-url-parameters-values-with-jquery.html
-// Read a page's GET URL variables and return them as an associative array.
-function getUrlVars() {
-  var vars = {}, hash;
-  var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-  for (var i = 0; i < hashes.length; i++) {
-    hash = hashes[i].split('=');
-    vars[hash[0]] = hash[1];
-  }
-  return vars;
-}
-
-
 
 function getProjects() {
   var projects = [];
@@ -28,21 +15,6 @@ function addProject(project) {
     cookie.set("projects", JSON.stringify(projects), {expires: 1000}); // expire 1000 days from now
   }
 }
-function clearProjects() {
-  // resetting function, for debugging purposes
-  cookie.empty();
-}
-
-
-
-
-var presidentsDB = [
-  {
-    name: "George Washington",
-    description: "The first US president, he held the office from 1789 to 1797. He had wooden teeth and rosy cheeks.",
-    image: "learnings/presidents/images/georgeWashington.jpg"
-  }
-];
 
 
 
@@ -58,7 +30,6 @@ function loadPage() {
     addProject(project);
     
     var num = projects.indexOf(project); // which number (i.e. president) we're on
-    num=0;
     
     var presidentHTML = ich.president(presidentsDB[num]);
     var projectHTML = ich.project(projectsDB[project]);
