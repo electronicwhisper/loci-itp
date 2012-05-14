@@ -47,7 +47,11 @@ function loadPage() {
     
   } else if (hash === "list") {
     var associations = projects.map(function (project, i) {
-      return {project: projectsDB[project], president: presidentsDB[i]}
+      return {
+        project: projectsDB[project],
+        projectID: project,
+        president: presidentsDB[i]
+      };
     });
     
     var html = ich.list({associations: associations});
@@ -63,6 +67,9 @@ function loadPage() {
     var html = ich[hash]({});
     $("#content").append(html);
   }
+  
+  // scroll to the top of the page
+  $("body").scrollTop(0);
 }
 
 window.onhashchange = loadPage;

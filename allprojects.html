@@ -17,7 +17,7 @@ tr:nth-child(odd) {
 <script>
 var s = "";
 projectsDB.forEach(function (project, i) {
-  s += "<tr><td>"+i+"</td><td>"+project["title"]+"</td><td>"+project["author"]+"</td></tr>";
+  s += "<tr><td>"+i+"</td><td>"+project["title"]+"</td><td>"+project["author"]+"<td><img src='"+project["image"]+"'/></td>"+"</td></tr>";
 });
 document.getElementById("projects").innerHTML = s;
 </script>

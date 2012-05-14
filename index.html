@@ -78,8 +78,15 @@
 
 <script id="list" type="text/html">
 {{#associations}}
-  <div>
-    {{#project}}{{title}}{{/project}} - {{#president}}{{name}}{{/president}}
+  <div class="menu">
+    <a href="#project={{projectID}}">
+      <div class="force-size">
+        <img class="i1" src="{{#project}}{{image}}{{/project}}" />
+        <img class="i2" src="images/{{#president}}{{image}}{{/president}}" />
+      </div>
+    
+      {{#project}}{{title}}{{/project}}&nbsp;=&nbsp;{{#president}}{{name}}{{/president}}
+    </a>
   </div>
 {{/associations}}
 </script>

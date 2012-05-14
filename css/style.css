@@ -29,6 +29,28 @@ via: http://www.hanselman.com/blog/EasyStepsToAMobilefriendlyResponsiveDesignWit
 }
 
 
+.force-size {
+  position: relative;
+  padding-bottom: 30%;
+  height: 0;
+  overflow: hidden;
+  background-color: #000;
+  margin-bottom: 10px;
+}
+.force-size .i1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+}
+.force-size .i2 {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  width: 50%;
+}
+
+
 /* CSS Document */
 body{
 	background:#ffffff;
