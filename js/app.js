@@ -51,11 +51,19 @@ loadPage();
 
 
 
-$("body").on("click", ".show-more", function () {
-  var showMore = $(this);
+$("body").on("click", ".show-more-button", function () {
+  var showMore = $(this).parents(".show-more");
   showMore.find(".show-more-button").hide();
   showMore.find(".more").show();
+  showMore.find(".show-less-button").show();
 });
+$("body").on("click", ".show-less-button", function () {
+  var showMore = $(this).parents(".show-more");
+  showMore.find(".show-more-button").show();
+  showMore.find(".more").hide();
+  showMore.find(".show-less-button").hide();
+});
+
 
 
 
