@@ -32,6 +32,10 @@ function loadPage() {
   // make sure footer is shown (if splash page happens, it will hide the footer)
   $(".footer").show();
   
+  if (!cookie.enabled()) {
+    location.hash = "nocookies";
+  }
+  
   var hash = location.hash.substr(1);
   
   ich.grabTemplates();
