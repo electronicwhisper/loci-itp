@@ -22,7 +22,7 @@ This is the URL that we send to people's emails for their future reference. When
 
 ### `/#about` and `/#scan` and `#success`
 
-Just static pages. But change the words on the success page (`index.html` lines 132-137). And redirect the php mailer to `/#success`.
+Just static pages. But change the words on the success page. And redirect the php mailer to `/#success`.
 
 ## `/clear.html`
 

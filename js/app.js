@@ -51,12 +51,15 @@ function loadPage() {
       $("#content").append(html);
     } else {
       var num = projects.indexOf(project); // which number (i.e. president) we're on
-
-      // TODO: check that presidents isn't overflowed, show "win" info
-
+      
       var presidentHTML = ich.president(presidentsDB[num]);
       var projectHTML = ich.project(projectsDB[project]);
-
+      
+      if (num >= presidentsDB.length) {
+        // learned all the presidents!
+        presidentHTML = ich.win({});
+      }
+      
       $("#content").append(projectHTML);
       $("#content").append(presidentHTML);
     }

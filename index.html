@@ -83,10 +83,15 @@
     <a href="#project={{projectID}}">
       <div class="force-size">
         <img class="i1" src="{{#project}}{{image}}{{/project}}" />
-        <img class="i2" src="images/{{#president}}{{image}}{{/president}}" />
+        {{#president}}
+          <img class="i2" src="images/{{image}}" />
+        {{/president}}
       </div>
     
-      {{#project}}{{title}}{{/project}}&nbsp;=&nbsp;{{#president}}{{name}}{{/president}}
+      {{#project}}{{title}}{{/project}}
+      {{#president}}
+        &nbsp;=&nbsp;{{name}}
+      {{/president}}
     </a>
   </div>
 {{/associations}}
@@ -114,13 +119,21 @@
 
 
 
+<script id="win" type="text/html">
+<h2 class="head">No more presidents!</h2>
+<div class="content">
+<p>Congratulations! You have learned all the US presidents.</p>
+</div>
+</script>
+
+
+
 <script id="about" type="text/html">
 <h2 class="head">About Loci</h2>
 <div class="content">
 <p><a href="http://locimind.com"><b>Loci</b></a> turns your environment into a real life <b>Memory Palace </b>- helping you learn and remember whatever you want. It was developed by Maria Rabinovich as a learning application for the mobile phone. Here at the <b>ITP show</b> you can use Loci to learn about the presidents of the United States, using QR codes, but it usually runs on your mobile phone and uses GPS, allowing you to turn your walks or commute into a learning experience. Visit Maria in the app room to talk to her about this project.</p>
 </div>
 </script>
-
 
 <script id="scan" type="text/html">
 <h2 class="head">Scan a Loci QR Code!</h2>
